@@ -7,7 +7,7 @@
     <!-- 开启事务注解 -->
     <tx:annotation-driven/>
     <!-- 指定jdbc配置参数文件的位置 -->
-    <context:property-placeholder location="classpath:jdbc.properties,log4.properties"/>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
     <!-- 指定组件自动扫描 -->
     <context:component-scan base-package="com.jackie.hibernate"/>
     <!-- 配置数据源 -->
