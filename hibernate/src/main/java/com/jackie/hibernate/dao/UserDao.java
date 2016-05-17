@@ -7,4 +7,8 @@ import com.jackie.hibernate.model.User;
  */
 public interface UserDao {
     void addUser(User user);
+
+    void updateUser(User user);
+
+    User findUserByUsername(String username);
 }

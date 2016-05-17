@@ -14,6 +14,8 @@ public class User {
     private Long id;
     private String username;
     private String password;
+    @Version
+    private Long version;
 
     public Long getId() {
         return id;
@@ -37,5 +39,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 }

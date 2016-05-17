@@ -29,6 +29,8 @@
         </property>
         <property name="packagesToScan" value="com.jackie.hibernate"/>
     </bean>
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate"
+          p:sessionFactory-ref="sessionFactory"/>
     <!-- 配置hibernate事务管理器 -->
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager"

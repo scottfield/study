@@ -4,6 +4,7 @@ import com.jackie.hibernate.model.User;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.orm.hibernate4.HibernateOptimisticLockingFailureException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -23,9 +24,16 @@ public class UserServiceTest {
     public void addUser() throws Exception {
         logger.info("save user");
         User user = new User();
-        user.setUsername("jackie");
+        user.setUsername("tom");
         user.setPassword("password");
         userService.addUser(user);
 
+    }
+
+    @Test(expected = HibernateOptimisticLockingFailureException.class)
+    public void testUpdateUser() throws Exception {
+        User jackie = userService.findUserByUsername("jackie");
+        jackie.setPassword("fdafdafdaeeee");
+        userService.updateUser(jackie);
     }
 }
