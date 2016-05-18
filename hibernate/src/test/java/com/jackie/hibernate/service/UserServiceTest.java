@@ -4,11 +4,14 @@ import com.jackie.hibernate.model.User;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.orm.hibernate4.HibernateOptimisticLockingFailureException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertNull;
 
 /**
  * Created by jackie on 5/13/2016.
@@ -18,22 +21,23 @@ import javax.annotation.Resource;
 public class UserServiceTest {
     @Resource
     private UserService userService;
-    private Logger logger = Logger.getLogger(UserServiceTest.class);
 
     @Test
     public void addUser() throws Exception {
-        logger.info("save user");
         User user = new User();
-        user.setUsername("tom");
+        user.setUsername("jackie");
         user.setPassword("password");
+        assertNull(user.getId());
         userService.addUser(user);
-
+        assertNotNull(user.getId());
+        System.out.println(user.getId());
     }
 
-    @Test(expected = HibernateOptimisticLockingFailureException.class)
-    public void testUpdateUser() throws Exception {
-        User jackie = userService.findUserByUsername("jackie");
-        jackie.setPassword("fdafdafdaeeee");
+    @Test
+    public void updateUser() throws Exception {
+        User jackie = userService.findUserById(21L);
+        jackie.setUsername("jackies");
+        jackie.setPassword("passwordchange");
         userService.updateUser(jackie);
     }
 }

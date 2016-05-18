@@ -6,8 +6,6 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by jackie on 5/13/2016.
@@ -23,16 +21,17 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateUser(User user) {
-        template.merge(user);
+    public User updateUser(User user) {
+        return template.merge(user);
     }
 
     @Override
     public User findUserByUsername(String username) {
-        List<?> user = template.find("select user from User user where user.username=?", username);
-        if (Objects.nonNull(user) && user.size() > 0) {
-            return (User) user.get(0);
-        }
-        return null;
+        return (User) template.findByNamedParam("select user from User user where user.username=:username", "username", username).get(0);
+    }
+
+    @Override
+    public User findUserById(Long id) {
+        return template.get(User.class, id);
     }
 }

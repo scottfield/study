@@ -25,6 +25,19 @@
         <aspectjrt.version>1.7.2</aspectjrt.version>
         <aspectweaver.version>1.7.4</aspectweaver.version>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>hoverv</finalName>
+    </build>
     <dependencyManagement>
         <dependencies>
             <!-- 添加spring的依赖 -->
