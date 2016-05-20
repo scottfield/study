@@ -1,9 +1,17 @@
 package com.jackie.hibernate.model;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.SelectBeforeUpdate;
 
-import javax.persistence.*;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Version;
 
 /**
  * Created by jackie on 5/13/2016.
@@ -12,6 +20,7 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @Access(AccessType.FIELD)
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -67,5 +76,15 @@ public class User {
 
     public void setVersion(Long version) {
         this.version = version;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", version=" + version +
+                '}';
     }
 }

@@ -5,10 +5,11 @@ import com.jackie.hibernate.model.User;
 import com.jackie.hibernate.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import javax.management.RuntimeErrorException;
+import java.util.List;
 
 /**
  * Created by jackie on 5/13/2016.
@@ -34,12 +35,39 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User findUserByUsername(String username) {
+        userDao.findUserByUsername(username);
+        userDao.findUserByUsername(username);
+        userDao.findUserByUsername(username);
+        userDao.findUserByUsername(username);
+        userDao.findUserByUsername(username);
+        userDao.findUserByUsername(username);
+        userDao.findUserByUsername(username);
+        userDao.findUserByUsername(username);
+
         return userDao.findUserByUsername(username);
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED)
     public User findUserById(Long id) {
         return userDao.findUserById(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteUsers() {
+        userDao.deleteUsers();
+    }
+
+    @Override
+    @Transactional
+    public void batchCreateUser(List<User> users) {
+        userDao.batchCreateUser(users);
+    }
+
+    @Override
+    @Transactional
+    public void hqUpdateUser(User user) {
+        userDao.hqUpdateUser(user);
     }
 }
