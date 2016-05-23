@@ -42,17 +42,17 @@
     <dependencyManagement>
         <dependencies>
             <!-- 添加spring的依赖 -->
-           <!-- <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>-->
+            <!-- <dependency>
+                 <groupId>org.springframework</groupId>
+                 <artifactId>spring-core</artifactId>
+                 <version>${spring.version}</version>
+                 <exclusions>
+                     <exclusion>
+                         <groupId>commons-logging</groupId>
+                         <artifactId>commons-logging</artifactId>
+                     </exclusion>
+                 </exclusions>
+             </dependency>-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
@@ -124,6 +124,11 @@
                 <artifactId>hibernate-core</artifactId>
                 <version>${hibernate.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-ehcache</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -131,10 +136,10 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
-     <!--   <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-        </dependency>-->
+        <!--   <dependency>
+               <groupId>org.slf4j</groupId>
+               <artifactId>jcl-over-slf4j</artifactId>
+           </dependency>-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
