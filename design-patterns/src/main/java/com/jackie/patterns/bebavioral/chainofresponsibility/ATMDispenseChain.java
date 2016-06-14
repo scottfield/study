@@ -7,6 +7,7 @@ public class ATMDispenseChain {
     private DispenseChain dispenseChain;
 
     public ATMDispenseChain() {
+        //initialize the request handler chain
         dispenseChain = new Dollar50Dispenser();
         DispenseChain dispenseChain20 = new Dollar20Dispenser();
         DispenseChain dispenseChain10 = new Dollar10Dispenser();
