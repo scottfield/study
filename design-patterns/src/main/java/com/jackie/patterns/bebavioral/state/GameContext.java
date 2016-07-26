@@ -1,8 +1,5 @@
 package com.jackie.patterns.bebavioral.state;
 
-import javax.crypto.interfaces.PBEKey;
-import java.security.PublicKey;
-
 /**
  * Created by jackie on 6/14/2016.
  */
