@@ -10,9 +10,10 @@
     <modules>
         <module>hibernate</module>
         <module>restfulService</module>
-        <module>spring-framework</module>
         <module>design-patterns</module>
         <module>se</module>
+        <module>csv</module>
+        <module>commons-net</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 指定各个依赖的版本号 -->
@@ -37,10 +38,10 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <encoding>utf-8</encoding>
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>hoverv</finalName>
     </build>
     <dependencyManagement>
         <dependencies>
