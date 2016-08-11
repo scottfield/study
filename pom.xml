@@ -14,6 +14,7 @@
         <module>se</module>
         <module>csv</module>
         <module>commons-net</module>
+        <module>io</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 指定各个依赖的版本号 -->
