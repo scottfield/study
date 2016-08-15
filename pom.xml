@@ -15,6 +15,7 @@
         <module>csv</module>
         <module>commons-net</module>
         <module>io</module>
+        <module>poi</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 指定各个依赖的版本号 -->
