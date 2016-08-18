@@ -16,6 +16,7 @@
         <module>commons-net</module>
         <module>io</module>
         <module>poi</module>
+        <module>mongo-db</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 指定各个依赖的版本号 -->
