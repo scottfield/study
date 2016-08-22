@@ -1,4 +1,6 @@
-package com.jackie.io;
+package com.jackie.io.file;
+
+import com.jackie.io.StreamCopier;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +17,7 @@ public class FileTyper {
             System.out.println(System.getProperty("user.dir"));//获取当前工作目录
 //            InputStream in = FileTyper.class.getClassLoader().getResourceAsStream("readme.txt");
             InputStream in = new FileInputStream(new File("readme.txt"));//改文件需在当前工作目录下存在
-            StreamCopier.copy(in,System.out);
+            StreamCopier.copy(in, System.out);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

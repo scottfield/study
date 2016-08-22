@@ -1,4 +1,6 @@
-package com.jackie.io;
+package com.jackie.io.network;
+
+import com.jackie.io.JStreamedTextArea;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;

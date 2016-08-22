@@ -1,4 +1,4 @@
-package com.jackie.io;
+package com.jackie.io.socket;
 
 import java.io.IOException;
 import java.io.InputStream;
