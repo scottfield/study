@@ -17,6 +17,7 @@
         <module>io</module>
         <module>poi</module>
         <module>mongo-db</module>
+        <module>email</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 指定各个依赖的版本号 -->
