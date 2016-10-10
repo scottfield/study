@@ -21,6 +21,7 @@
         <module>web-service</module>
         <module>servlet</module>
         <module>mybatis</module>
+        <module>spring-schedule</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 指定各个依赖的版本号 -->
