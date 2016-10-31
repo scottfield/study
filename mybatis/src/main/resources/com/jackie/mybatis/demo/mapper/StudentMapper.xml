@@ -9,16 +9,33 @@
         <result property="email" column="email"/>
         <result property="dob" column="dob"/>
     </resultMap>
-    <select id="findAllStudents" resultMap="StudentResult">
-        SELECT * FROM STUDENTS
+    <select id="findAllStudents" resultMap="StudentResult" resultSetType="SCROLL_INSENSITIVE">
+       <![CDATA[
+        SELECT *
+        FROM STUDENTS
+        ]]>
     </select>
-    <select id="findStudentById" parameterType="int"
-            resultType="com.jackie.mybatis.demo.model.Student">
-        SELECT STUD_ID AS STUDID, NAME, EMAIL, DOB
-        FROM STUDENTS WHERE STUD_ID=#{Id}
+    <select id="findStudentByName" resultMap="StudentResult">
+        <![CDATA[
+        SELECT *
+        FROM STUDENTS WHERE name LIKE #{name}
+        ]]>
+    </select>
+    <select id="findStudentById" parameterType="int"  resultType="com.jackie.mybatis.demo.model.Student">
+         <![CDATA[
+        SELECT
+            STUD_ID AS STUDID,
+            NAME,
+            EMAIL,
+            DOB
+        FROM STUDENTS
+        WHERE STUD_ID = #{Id}
+        ]]>
     </select>
     <insert id="insertStudent" parameterType="com.jackie.mybatis.demo.model.Student">
-        INSERT INTO STUDENTS(STUD_ID,NAME,EMAIL,DOB)
-        VALUES(#{studId },#{name},#{email},#{dob})
+       <![CDATA[
+        INSERT INTO STUDENTS (STUD_ID, NAME, EMAIL, DOB)
+        VALUES (#{studId }, #{name}, #{email}, #{dob})
+        ]]>
     </insert>
 </mapper>
