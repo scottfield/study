@@ -2,10 +2,15 @@ package com.jackie.se.stream;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.summarizingInt;
+import static java.util.stream.Collectors.summingInt;
 import static java.util.stream.Collectors.toList;
 
 public class DishTest {
@@ -34,7 +39,12 @@ public class DishTest {
 //        revertingBackToObjectStream(menu);
 //        numberRange();
 //        createStreamWithIterate();
-        first20FibonacinoNumbers();
+//        first20FibonacinoNumbers();
+//        highestCalorieDish(menu);
+//        lowestCalorieDish(menu);
+//        totalCountOfDishes(menu);
+//        totalCaloriesOfMenu(menu);
+        summaryOfMenu(menu);
     }
 
 
@@ -160,11 +170,34 @@ public class DishTest {
     }
 
     private static void first20FibonacinoNumbers() {
-        Stream.iterate(new Integer[]{0, 1}, (arr) -> {
-            Integer[] newArr = new Integer[2];
-            newArr[0] = arr[1];
-            newArr[1] = arr[0] + arr[1];
-            return newArr;
-        }).flatMap(Arrays::stream).distinct().limit(20).forEach(System.out::println);
+        Stream.iterate(new Integer[]{0, 1}, (arr) -> new Integer[]{arr[1], arr[0] + arr[1]}).flatMap(Arrays::stream).distinct().limit(20).forEach(System.out::println);
+    }
+
+    private static void highestCalorieDish(List<Dish> menu) {
+        menu.stream()
+            .collect(Collectors.maxBy(comparingInt(Dish::getCalories))).ifPresent(System.out::println);
+    }
+
+    private static void lowestCalorieDish(List<Dish> menu) {
+        menu.stream()
+            .collect(Collectors.minBy(comparingInt(Dish::getCalories))).ifPresent(System.out::println);
+    }
+
+    private static void totalCountOfDishes(List<Dish> menu) {
+        Long count = menu.stream()
+            .collect(Collectors.counting());
+        System.out.println("total count of dishes:" + count);
+    }
+
+    private static void totalCaloriesOfMenu(List<Dish> menu) {
+        Integer totalCalories = menu.stream()
+            .collect(summingInt(Dish::getCalories));
+        System.out.println("total calories of menu:" + totalCalories);
+    }
+
+    private static void summaryOfMenu(List<Dish> menu) {
+        IntSummaryStatistics summary = menu.stream()
+            .collect(summarizingInt(Dish::getCalories));
+        System.out.println("calorie summary of menu:" + summary);
     }
 }
