@@ -1,5 +1,6 @@
 package com.jackie.se.generics;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,22 @@ public class UpperBoundDemo {
         ln.clear();
 //        ln.add(new EvenNumber(35));  // compile-time error
         printList(numbers);
+        List<Serializable> serializableList = null;
+        List<Object> objectList = new ArrayList<>();
+        objectList.add(new Object());
+        List<Number> numberList = null;
+        List<? super Integer> consumerList;
+        consumerList = serializableList;
+        for(Object o : consumerList){
+
+        }
+        consumerList = objectList;
+        consumerList = numberList;
+        consumerList.add(new Integer(0));//this compiles
+//        consumerList.add(Long.valueOf(1));
+        List<Object> output = new ArrayList<Object>();
+        List<Long> input = new ArrayList<Long>();
+        copy(output, input);
     }
 
     public static void printList(List<?> list) {
@@ -37,6 +54,12 @@ public class UpperBoundDemo {
         return numbers.stream()
             .mapToDouble(Number::doubleValue)
             .sum();
+    }
+
+    public static <T> void copy
+        (List<? super T> dest, List<? extends T> src) {  // bounded wildcard parameterized types
+        for(int i = 0; i < src.size(); i++)
+            dest.set(i, src.get(i));
     }
 
     void wildcardError(List<?> list) {
