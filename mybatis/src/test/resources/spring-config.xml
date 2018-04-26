@@ -9,20 +9,16 @@
     </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:com/jackie/mybatis/demo/mapper/StudentMapper.xml"/>
+        <property name="mapperLocations" value="classpath:com/jackie/mybatis/pagination/**/*.xml"/>
         <property name="plugins">
             <list>
-                <bean class="com.jackie.mybatis.demo.interceptor.PaginationInterceptor">
-                    <constructor-arg value="com.jackie.mybatis.demo.interceptor.MysqlDialect"/>
+                <bean class="com.jackie.mybatis.pagination.interceptor.PaginationInterceptor">
+                    <constructor-arg value="com.jackie.mybatis.pagination.interceptor.MysqlDialect"/>
                 </bean>
             </list>
         </property>
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.jackie.mybatis.demo.mapper"/>
+        <property name="basePackage" value="com.jackie.mybatis.pagination.mapper"/>
     </bean>
-   <!-- <bean id="reader" class="org.mybatis.spring.batch.MyBatisPagingItemReader">
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-        <property name="queryId" value="getEmployee" />
-    </bean>-->
 </beans>
