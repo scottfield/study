@@ -18,10 +18,11 @@
     <select id="findStudentByName" resultMap="StudentResult">
         <![CDATA[
         SELECT *
-        FROM STUDENTS WHERE name LIKE #{name}
+        FROM STUDENTS
+        WHERE name LIKE #{name}
         ]]>
     </select>
-    <select id="findStudentById" parameterType="int"  resultType="com.jackie.mybatis.pagination.model.Student">
+    <select id="findStudentById" parameterType="int" resultType="com.jackie.mybatis.pagination.model.Student">
          <![CDATA[
         SELECT
             STUD_ID AS STUDID,
@@ -32,10 +33,10 @@
         WHERE STUD_ID = #{Id}
         ]]>
     </select>
-    <insert id="insertStudent" parameterType="com.jackie.mybatis.pagination.model.Student">
+    <insert id="addStudent" parameterType="com.jackie.mybatis.pagination.model.Student">
        <![CDATA[
-        INSERT INTO STUDENTS (STUD_ID, NAME, EMAIL, DOB)
-        VALUES (#{studId }, #{name}, #{email}, #{dob})
+        INSERT INTO STUDENTS (NAME, EMAIL, DOB, lunch_time)
+        VALUES (#{name}, #{email}, #{dob}, #{lunchTime})
         ]]>
     </insert>
 </mapper>

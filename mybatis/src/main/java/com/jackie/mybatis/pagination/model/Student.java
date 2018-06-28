@@ -1,5 +1,8 @@
 package com.jackie.mybatis.pagination.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -9,7 +12,8 @@ public class Student {
     private long studId;
     private String name;
     private String email;
-    private Date dob;
+    private LocalDate dob;
+    private LocalDateTime lunchTime;
 
     public long getStudId() {
         return studId;
@@ -35,11 +39,19 @@ public class Student {
         this.email = email;
     }
 
-    public Date getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
+    }
+
+    public LocalDateTime getLunchTime() {
+        return lunchTime;
+    }
+
+    public void setLunchTime(LocalDateTime lunchTime) {
+        this.lunchTime = lunchTime;
     }
 }

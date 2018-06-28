@@ -10,6 +10,10 @@ import java.util.List;
  */
 public interface StudentMapper {
     List<Student> findAllStudents();
+
     List<Student> findAllStudents(RowBounds page);
-    List<Student> findStudentByName(String name,RowBounds page);
+
+    List<Student> findStudentByName(String name, RowBounds page);
+
+    int addStudent(Student student);
 }

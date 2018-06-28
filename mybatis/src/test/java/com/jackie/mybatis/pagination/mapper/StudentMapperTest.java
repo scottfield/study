@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.rmi.StubNotFoundException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -30,7 +34,7 @@ public class StudentMapperTest {
     @Test
     public void findAllStudentsByName() throws Exception {
         RowBounds page = new RowBounds(0, 1);
-        List<Student> allStudents = studentMapper.findStudentByName("%Stude%",page);
+        List<Student> allStudents = studentMapper.findStudentByName("%Stude%", page);
         System.out.println(allStudents);
     }
 
@@ -41,6 +45,15 @@ public class StudentMapperTest {
             String s = tokenizer.nextToken();
             System.out.println(s);
         }
+    }
 
+    @Test
+    public void testAddStudent() throws Exception {
+        Student student = new Student();
+        student.setName("jackiew");
+        student.setEmail("jackiew@qq.com");
+        student.setDob(LocalDate.now());
+        student.setLunchTime(LocalDateTime.now());
+        studentMapper.addStudent(student);
     }
 }
