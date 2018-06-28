@@ -40,8 +40,7 @@ public class SerializeDateDemo {
 
     static {
         objectMapper = new ObjectMapper().configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-        objectMapper.registerModule(new ParameterNamesModule())
-                .registerModule(new Jdk8Module())
+        objectMapper
                 .registerModule(new JavaTimeModule());
     }
 
