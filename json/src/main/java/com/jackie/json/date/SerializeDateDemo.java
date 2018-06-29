@@ -46,7 +46,8 @@ public class SerializeDateDemo {
 
     public static void main(String[] args) throws IOException {
 //        serializeMapWithDateKeyAndDateValue();
-        serializeObject();
+//        serializeObject();
+        deserializeObject();
     }
 
     private static void serializeMapWithDateKeyAndDateValue() throws JsonProcessingException {
@@ -66,6 +67,12 @@ public class SerializeDateDemo {
         vo.setDateTime(LocalDateTime.now());
         String result = objectMapper.writeValueAsString(vo);
         System.out.println(result);
+    }
+
+    private static void deserializeObject() throws IOException {
+        String jsonStr = "{\"date\":\"2018-06-29\",\"time\":\"18:53:06.479\",\"dateTime\":\"2018-06-29T18:53:06.479\"}";
+        VO vo = objectMapper.readValue(jsonStr, VO.class);
+        System.out.println(vo);
     }
 
     private static class VO {
