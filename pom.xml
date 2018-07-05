@@ -26,6 +26,7 @@
         <module>bit-operation</module>
         <module>json</module>
         <module>javassist</module>
+        <module>bean-validation</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 指定各个依赖的版本号 -->
